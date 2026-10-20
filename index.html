@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4F46E5">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>InfoEdu.uz — abituriyentlar so'rovnomasi</title>
+<style>
+  :root{
+    --bg:#F4F6FF;
+    --card:#FFFFFF;
+    --ink:#0F172A;
+    --muted:#64748B;
+    --line:#E2E8F0;
+    --soft:#EEF2FF;
+    --soft-2:#F8FAFF;
+    --primary:#4F46E5;
+    --primary-2:#2563EB;
+    --ok:#10B981;
+    --amber-bg:#FFFBEB;
+    --amber-line:#FDE68A;
+    --amber-ink:#92400E;
+    --danger:#EF4444;
+    --radius:26px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;min-height:100%}
+  body{
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.45;
+    overflow-x:hidden;
+  }
+  .bg-orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none;z-index:0}
+  .orb1{width:420px;height:420px;background:#C7D2FE;top:-140px;left:-120px}
+  .orb2{width:360px;height:360px;background:#BFDBFE;bottom:-120px;right:-100px}
+  .orb3{width:260px;height:260px;background:#DDD6FE;top:40%;right:-140px;opacity:.4}
+  .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:22px 16px calc(40px + env(safe-area-inset-bottom))}
+  .brand{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 4px 16px}
+  .brand-left{display:flex;align-items:center;gap:10px}
+  .logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(79,70,229,.30)}
+  .logo svg{width:20px;height:20px;display:block}
+  .brand-name{font-weight:750;font-size:15px;letter-spacing:-.01em;line-height:1.2}
+  .brand-name span{display:block;color:var(--muted);font-weight:500;font-size:11.5px;margin-top:1px}
+  .chip{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);background:var(--soft);border:1px solid #DDE3FF;padding:6px 10px;border-radius:999px;white-space:nowrap}
+  .card{
+    background:var(--card);
+    border:1px solid rgba(226,232,240,.9);
+    border-radius:var(--radius);
+    box-shadow:0 24px 60px rgba(15,23,42,.08), 0 2px 6px rgba(15,23,42,.03);
+    overflow:hidden;
+  }
+  .top{display:flex;align-items:center;gap:12px;padding:14px 18px 10px}
+  .back{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:.15s}
+  .back:hover{background:#F8FAFC;color:var(--ink)}
+  .back.show{display:flex}
+  .meta{flex:1;min-width:0}
+  .section{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--primary);margin-bottom:2px}
+  .counter{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .counter b{color:var(--ink)}
+  .progress{height:7px;background:#EEF2F7;margin:0 18px 0;border-radius:999px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--primary-2));border-radius:999px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+  .screen{padding:16px 18px 22px;min-height:400px;display:flex;flex-direction:column}
+  .screen.enter{animation:rise .28s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion: reduce){
+    .screen.enter{animation:none}
+    .progress i{transition:none}
+  }
+  h1{font-size:clamp(23px,5.2vw,30px);line-height:1.18;letter-spacing:-.03em;margin:6px 0 10px;font-weight:800}
+  h2{font-size:clamp(19px,4.4vw,23px);line-height:1.25;letter-spacing:-.02em;margin:2px 0 6px;font-weight:750}
+  .sub{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+  .hint{color:var(--muted);font-size:13px;margin:-2px 0 11px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:var(--soft-2);border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:13px;color:#334155;font-weight:600}
+  .prize{display:flex;gap:11px;align-items:flex-start;background:var(--amber-bg);border:1px solid var(--amber-line);color:var(--amber-ink);border-radius:15px;padding:13px 14px;font-size:13.5px;margin:0 0 18px}
+  .prize .em{font-size:17px;line-height:1.2}
+  .trust{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12.5px;margin-top:12px;justify-content:center}
+  .options{display:grid;gap:9px}
+  .options.two{grid-template-columns:1fr 1fr}
+  @media(max-width:430px){.options.two{grid-template-columns:1fr}}
+  .opt{
+    display:flex;align-items:center;gap:12px;
+    width:100%;text-align:left;cursor:pointer;
+    background:#fff;border:1.5px solid var(--line);border-radius:16px;
+    padding:12px 14px;font:inherit;color:var(--ink);
+    transition:border-color .15s, background .15s, box-shadow .15s, transform .06s;
+  }
+  .opt:hover{border-color:#C7D2FE;background:#FBFBFF}
+  .opt:active{transform:scale(.992)}
+  .opt:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+  .opt .lead{width:36px;height:36px;border-radius:12px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto;transition:.15s}
+  .opt[aria-pressed="true"] .lead{background:var(--primary)}
+  .opt .t{flex:1;min-width:0}
+  .opt .t b{display:block;font-weight:650;font-size:14.5px;letter-spacing:-.01em}
+  .opt .t small{display:block;color:var(--muted);font-size:12px;margin-top:1px;line-height:1.3}
+  .mark{width:22px;height:22px;border-radius:50%;border:2px solid #CBD5E1;flex:0 0 auto;position:relative;transition:.15s}
+  .opt[aria-pressed="true"]{border-color:var(--primary);background:var(--soft);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
+  .opt[aria-pressed="true"] .mark{border-color:var(--primary);background:var(--primary)}
+  .opt[aria-pressed="true"] .mark::after{content:"";position:absolute;inset:4px;border-radius:50%;background:#fff}
+  .opt.multi .mark{border-radius:7px}
+  .opt.multi[aria-pressed="true"] .mark::after{content:"✓";inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;background:none;border-radius:0}
+  .actions{display:flex;gap:10px;margin-top:14px}
+  .btn{
+    appearance:none;border:0;cursor:pointer;font:inherit;font-weight:700;
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;
+    padding:15px 18px;border-radius:16px;font-size:15.5px;letter-spacing:-.01em;
+    box-shadow:0 12px 24px rgba(79,70,229,.24);transition:.18s;flex:1;
+  }
+  .btn:hover{filter:brightness(1.04)}
+  .btn:active{transform:translateY(1px)}
+  .btn[disabled]{opacity:1;background:#E2E8F0;color:#94A3B8;box-shadow:none;cursor:not-allowed}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none;font-weight:600}
+  .btn.ghost:hover{background:#F8FAFC}
+  .btn.sm{flex:0 0 auto;padding:13px 16px;font-size:14.5px}
+  .input, textarea, select.input{
+    width:100%;font:inherit;color:var(--ink);background:#fff;
+    border:1.5px solid var(--line);border-radius:16px;padding:15px 16px;font-size:15.5px;
+    outline:none;transition:border-color .15s, box-shadow .15s;
+  }
+  .input:focus, textarea:focus, select.input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.10)}
+  textarea{min-height:120px;resize:vertical;line-height:1.5}
+  select.input{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#64748B 50%),linear-gradient(135deg,#64748B 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
+  .foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:12px;color:#64748B}
+  .done{text-align:center;padding:28px 22px 34px}
+  .okcircle{width:86px;height:86px;border-radius:50%;background:#ECFDF5;display:flex;align-items:center;justify-content:center;margin:6px auto 18px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .okcircle i{width:54px;height:54px;border-radius:50%;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:27px;font-weight:800}
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+  .done h2{margin-bottom:8px}
+  .done p{color:var(--muted);font-size:14.5px;max-width:420px;margin:0 auto 16px}
+  .stats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+  .stat{display:inline-flex;gap:7px;align-items:center;background:#F8FAFC;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:#475569}
+  .shareRow{display:flex;gap:10px;max-width:360px;margin:20px auto 0}
+  .resume{display:none;margin:0 0 14px;padding:12px 14px;border-radius:14px;background:var(--amber-bg);border:1px solid var(--amber-line);color:var(--amber-ink);font-size:13.5px;align-items:center;gap:10px}
+  .resume.show{display:flex}
+  .resume button{margin-left:auto;border:0;background:var(--amber-ink);color:#fff;border-radius:10px;padding:8px 10px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+  .error{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;font-size:13.5px}
+  .error.show{display:block}
+  .demo{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;background:#EFF6FF;border:1px solid #BFDBFE;color:#1E40AF;font-size:13px}
+  .demo.show{display:block}
+  .loadwrap{text-align:center;padding:34px 10px 26px}
+  .spinner{width:44px;height:44px;border-radius:50%;border:4px solid #E2E8F0;border-top-color:var(--primary);margin:0 auto 18px;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:#0F172A;color:#fff;font-size:13.5px;padding:11px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:86vw;text-align:center}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  @media(max-width:480px){
+    .wrap{padding:14px 10px 28px}
+    .card{border-radius:22px}
+    .screen{padding:16px 16px 20px}
+    .top{padding:12px 14px 8px}
+    .progress{margin:0 14px}
+  }
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><div class="bg-orb orb3"></div>
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-left">
+      <div class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+      <div class="brand-name">InfoEdu.uz<span>abituriyentlar so'rovnomasi</span></div>
+    </div>
+    <div class="chip">🔒 Anonim</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <button class="back" id="back" aria-label="Orqaga">←</button>
+      <div class="meta">
+        <div class="section" id="section">Boshlash</div>
+        <div class="counter" id="counter"></div>
+      </div>
+    </div>
+    <div class="progress"><i id="bar"></i></div>
+    <div id="screen" class="screen"></div>
+  </div>
+
+  <div class="foot"><span>InfoEdu.uz · 2026</span><span>20 savol · 4–5 daqiqa</span></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ===== SOZLAMA (o'zgartirmang) ===== */
+  var CONFIG = {
+    endpoint: "https://ntfy.sh/infoedu-sv-9899550c4c0b",
+    surveyId: "infoedu-abituriyent-2026-10",
+    encrypt: true,
+    pubJwk: {"kty":"EC","crv":"P-256","x":"0KPOH_-WmYEXZmAqOKzA2tHSU8tp9OUWnVBPv9MgImg","y":"PqndhgpExOqI-LRbdsUYdQtFB1QHWtH7VsW_7YhcjeE"}
+  };
+
+  var FEATURES = [
+    {v:"unlimited", b:"Cheksiz test ishlash", s:"Kunlik limit yo'q — xohlagancha mashq", ico:"♾️"},
+    {v:"explain", b:"Xato savolga tushuntirish", s:"Nima uchun xato bo'lgani va to'g'ri yechim", ico:"💡"},
+    {v:"weak", b:"Zaif mavzular tahlili", s:"Qaysi mavzuda ko'p xato qilayotganingiz", ico:"📊"},
+    {v:"plan", b:"Shaxsiy reja", s:"Imtihongacha har kunga mashq jadvali", ico:"🗓️"},
+    {v:"rating", b:"Reyting", s:"Boshqa abituriyentlar orasida o'rningiz", ico:"🏆"},
+    {v:"uni", b:"Universitetga moslash", s:"Ballingiz qaysi yo'nalishlarga yetishi", ico:"🎯"},
+    {v:"notes", b:"Konspekt va PDF", s:"Qisqa konspektlar, yuklab olish", ico:"📚"},
+    {v:"clean", b:"Reklamasiz va tez sayt", s:"Reklama yo'q, sahifa tez ochiladi", ico:"⚡"}
+  ];
+
+  var QUESTIONS = [
+    {id:"role", type:"single", section:"Siz haqingizda", title:"Hozir siz kim siz?", options:["11-sinf o'quvchisi","10-sinf o'quvchisi","Maktabni bitirganman, DTM ga qayta tayyorlanaman","Boshqa (yozing)"]},
+    {id:"examYear", type:"single", section:"Siz haqingizda", title:"DTM yoki milliy sertifikat imtihonini qachon topshirasiz?", options:["2027-yilda","2028-yilda","2029-yilda yoki undan keyin","Hali aniqlamadim","DTM emas, milliy sertifikat topshiraman"]},
+    {id:"subjects", type:"multi", section:"Siz haqingizda", title:"Qaysi fanlardan imtihon topshirasiz?", hint:"Bir nechta variantni belgilashingiz mumkin", options:["Matematika","Fizika","Kimyo","Biologiya","Ona tili va adabiyoti","Tarix","Geografiya","Ingliz tili","Rus tili","Informatika","Iqtisodiyot","Huquq","Boshqa"], two:true},
+    {id:"region", type:"select", section:"Siz haqingizda", title:"Qaysi viloyatdasiz?", placeholder:"Viloyatni tanlang", options:["Toshkent shahri","Toshkent viloyati","Andijon","Buxoro","Farg'ona","Jizzax","Xorazm","Namangan","Navoiy","Qashqadaryo","Qoraqalpog'iston","Samarqand","Sirdaryo","Surxondaryo"]},
+    {id:"tools", type:"multi", section:"Tayyorgarlik", title:"Hozir tayyorgarlik uchun nimalardan foydalanasiz?", hint:"Bir nechta variantni belgilashingiz mumkin", options:[{v:"Repetitor (oflayn)",ico:"👨‍🏫"},{v:"Onlayn kurs",ico:"🎥"},{v:"YouTube darslari",ico:"▶️"},{v:"Telegram kanallari",ico:"✈️"},{v:"Onlayn test saytlari",ico:"🧪"},{v:"Mobil ilova",ico:"📱"},{v:"Kitob va darsliklar",ico:"📖"},{v:"Maktab darslari",ico:"🏫"},{v:"Hech narsa",ico:"🚫"}]},
+    {id:"sites", type:"text", section:"Tayyorgarlik", title:"Qaysi sayt yoki ilovada test ishlaysiz?", hint:"Ixtiyoriy — bir nechtasini yozishingiz mumkin", placeholder:"Masalan: UzExam, Akam, Telegram bot", optional:true},
+    {id:"spend", type:"single", section:"Tayyorgarlik", title:"Oxirgi 3 oyda tayyorgarlik uchun qancha pul sarfladingiz?", options:["0 so'm","50 ming so'mgacha","50–150 ming so'm","150–300 ming so'm","300–500 ming so'm","500 ming – 1 mln so'm","1 mln so'mdan ko'p","Hisoblamaganman"]},
+    {id:"spendPurpose", type:"multi", section:"Tayyorgarlik", title:"Bu pul asosan nimaga ketdi?", hint:"Bir nechta variantni belgilashingiz mumkin", options:["Repetitor","O'quv kursi","Onlayn test yoki obuna","Kitoblar","Boshqa"]},
+    {id:"timePerDay", type:"single", section:"Tayyorgarlik", title:"Bir kunda tayyorgarlikka qancha vaqt ajratasiz?", options:["30 daqiqadan kam","30–60 daqiqa","1–2 soat","2–4 soat","4 soatdan ko'p"]},
+    {id:"pains", type:"multi", section:"Qiyinchiliklar", title:"Tayyorgarlikda sizni eng ko'p nima qiynaydi?", hint:"Eng ko'pi 2 tasini belgilang", max:2, options:["Qaysi mavzuda xato qilayotganimni bilmayman","Testda vaqt yetmaydi","Tushunmagan savolimni so'ray olmayman","Rejam yo'q, nimadan boshlashni bilmayman","Natijam o'smayapti","Kerakli material topolmayman","O'zimni majburlay olmayman","Boshqa"]},
+    {id:"analysis", type:"single", section:"Qiyinchiliklar", title:"Test natijalaringizni qanday tahlil qilasiz?", options:["Tahlil qilmayman","Faqat to'g'ri va xato sonini bilaman","Saytda qaysi mavzuda xato qilganimni ko'raman","Daftarga yozib boraman","Repetitor bilan tahlil qilaman"]},
+    {id:"topFeature", type:"single", section:"Funksiyalar", title:"Quyidagilardan qaysi biri siz uchun eng muhim?", hint:"Bitta variantni tanlang", features:true},
+    {id:"moreFeatures", type:"multi", section:"Funksiyalar", title:"Yana qaysilari muhim?", hint:"Bir nechta variantni belgilashingiz mumkin", features:true},
+    {id:"payFirst", type:"single", section:"Funksiyalar", title:"Qaysi biri uchun birinchi navbatda pul to'lardingiz?", hint:"Bitta variantni tanlang", features:true, extra:["Hech biriga to'lamayman"]},
+    {id:"price", type:"single", section:"Narx va to'lov", title:"Shu imkoniyatlar bitta obunada bo'lsa, oyiga qancha to'lash sizga normal?", options:["To'lamayman","10 ming so'mgacha","10–20 ming so'm","20–30 ming so'm","30–50 ming so'm","50–100 ming so'm","100 ming so'mdan ko'p"]},
+    {id:"payer", type:"single", section:"Narx va to'lov", title:"Obunani kim to'laydi?", options:["O'zim","Ota-onam","Ikkalamiz (o'zim va ota-onam)","Hech kim, to'lamaymiz"]},
+    {id:"payment", type:"single", section:"Narx va to'lov", title:"To'lov qilish sizga qaysi usulda qulay?", options:["Click","Payme","Uzum Bank","Plastik karta orqali o'tkazma","Naqd pul","Farqi yo'q"]},
+    {id:"platform", type:"single", section:"Narx va to'lov", title:"Qayerda ishlash qulay?", options:["Saytda (brauzerda)","Telegram bot orqali","Mobil ilovada","Farqi yo'q"]},
+    {id:"comment", type:"textarea", section:"Yakun", title:"Yana nima qo'shmoqchisiz?", hint:"Ixtiyoriy — qanday imkoniyat bo'lsa, albatta ishlatardingiz?", placeholder:"Fikringizni yozib qoldiring...", optional:true},
+    {id:"contact", type:"text", section:"Yakun", title:"Sovrinli o'yin uchun aloqa", hint:"Ixtiyoriy — Telegram username yoki telefon raqam. Faqat sovrin uchun ishlatiladi.", placeholder:"@username yoki +998...", optional:true}
+  ];
+
+  var KEY = "infoedu_survey_v2";
+  function newUid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+  var state = { step: 0, answers: {}, startedAt: Date.now(), submitted: false, uid: newUid(), submitting: false };
+  var screen = document.getElementById("screen");
+  var bar = document.getElementById("bar");
+  var counter = document.getElementById("counter");
+  var sectionEl = document.getElementById("section");
+  var backBtn = document.getElementById("back");
+  var toastEl = document.getElementById("toast");
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      if(!raw) return;
+      var s = JSON.parse(raw);
+      if(s && s.answers && typeof s.step === "number" && !s.submitted){
+        state = s;
+        state.submitting = false;
+        if(!state.startedAt) state.startedAt = Date.now();
+        if(!state.uid) state.uid = newUid();
+        if(state.step > QUESTIONS.length) state.step = QUESTIONS.length;
+      }
+    }catch(e){}
+  }
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function oval(o){ return typeof o === "string" ? o : o.v; }
+  function oico(o){ return typeof o === "string" ? "" : (o.ico || ""); }
+  function total(){ return QUESTIONS.length; }
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    setTimeout(function(){ toastEl.classList.remove("show"); }, 2200);
+  }
+  function haptic(){
+    try{ if(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) window.Telegram.WebApp.HapticFeedback.impactOccurred("light"); }catch(e){}
+  }
+
+  function setProgress(){
+    var pr = document.querySelector(".progress"); if(pr) pr.style.visibility = "visible";
+    var pct = state.step <= 0 ? 0 : Math.round((state.step) / total() * 100);
+    if(state.step >= total()) pct = 100;
+    bar.style.width = pct + "%";
+    if(state.step > total()){
+      sectionEl.textContent = "Yakun";
+      counter.innerHTML = "";
+    }else{
+      sectionEl.textContent = QUESTIONS[state.step - 1].section;
+      counter.innerHTML = "<b>" + state.step + "</b> / " + total();
+    }
+    backBtn.classList.toggle("show", state.step > 0 && state.step <= total());
+  }
+
+  function intro(){
+    backBtn.classList.remove("show");
+    sectionEl.textContent = "Boshlash";
+    counter.innerHTML = "";
+    bar.style.width = "0%";
+    var pr = document.querySelector(".progress"); if(pr) pr.style.visibility = "hidden";
+    var saved = state.step > 0 && Object.keys(state.answers).length > 0;
+    screen.className = "screen enter";
+    screen.innerHTML =
+      '<h1>Yangi tayyorgarlik xizmatini birga quramiz</h1>' +
+      '<p class="sub">InfoEdu.uz abituriyentlar uchun yangi xizmat tayyorlayapti. Savollarga halol javob bering — bu test emas, to‘g‘ri yoki noto‘g‘ri javob yo‘q.</p>' +
+      '<div class="pills">' +
+        '<span class="pill">⏱️ 4–5 daqiqa</span>' +
+        '<span class="pill">✍️ 20 savol</span>' +
+        '<span class="pill">🔒 Anonim</span>' +
+      '</div>' +
+      '<div class="prize"><span class="em">🎁</span><div><b>Sovrin:</b> 5 ishtirokchiga 1 oylik premium obuna. Ishtirok etish uchun oxirgi savolda aloqa qoldirasiz (ixtiyoriy).</div></div>' +
+      (saved ? '<div class="resume show"><span>Avval boshlagan edingiz.</span><button id="resumeBtn">Davom ettirish</button></div>' : '') +
+      '<div class="actions"><button class="btn" id="startBtn">' + (saved ? "Boshidan boshlash" : "So‘rovnomani boshlash →") + '</button></div>' +
+      '<div class="trust"><span>🔐 Javoblar shifrlangan ko‘rinishda yuboriladi</span></div>';
+    document.getElementById("startBtn").onclick = function(){
+      if(saved){ state.step = 0; state.answers = {}; state.startedAt = Date.now(); state.submitted = false; state.uid = newUid(); }
+      state.step = 1; save(); render();
+    };
+    if(saved){
+      var rb = document.getElementById("resumeBtn");
+      if(rb) rb.onclick = function(){ render(); };
+    }
+  }
+
+  function render(){
+    if(state.step <= 0){ intro(); return; }
+    if(state.step > total()){ doneScreen(); return; }
+    var q = QUESTIONS[state.step - 1];
+    setProgress();
+    screen.className = "screen enter";
+    var html = '<h2>' + esc(q.title) + '</h2>';
+    if(q.hint) html += '<p class="hint">' + esc(q.hint) + '</p>';
+
+    if(q.features){
+      html += '<div class="options">';
+      FEATURES.forEach(function(f){
+        var sel = q.type === "single" ? state.answers[q.id] === f.v : (state.answers[q.id] || []).indexOf(f.v) !== -1;
+        html += '<button type="button" class="opt' + (q.type === "multi" ? ' multi' : '') + '" data-v="' + esc(f.v) + '" aria-pressed="' + sel + '">' +
+          '<span class="lead">' + f.ico + '</span>' +
+          '<span class="t"><b>' + esc(f.b) + '</b><small>' + esc(f.s) + '</small></span><span class="mark"></span></button>';
+      });
+      if(q.extra) q.extra.forEach(function(x){
+        var sel = state.answers[q.id] === x;
+        html += '<button type="button" class="opt" data-v="' + esc(x) + '" aria-pressed="' + sel + '"><span class="t"><b>' + esc(x) + '</b></span><span class="mark"></span></button>';
+      });
+      html += '</div>';
+    } else if(q.type === "single" || q.type === "multi"){
+      html += '<div class="options' + (q.two ? ' two' : '') + '">';
+      q.options.forEach(function(o){
+        var v = oval(o), ic = oico(o);
+        var sel = q.type === "single" ? state.answers[q.id] === v : (state.answers[q.id] || []).indexOf(v) !== -1;
+        html += '<button type="button" class="opt' + (q.type === "multi" ? ' multi' : '') + '" data-v="' + esc(v) + '" aria-pressed="' + sel + '">' +
+          (ic ? '<span class="lead">' + ic + '</span>' : '') +
+          '<span class="t"><b>' + esc(v) + '</b></span><span class="mark"></span></button>';
+      });
+      html += '</div>';
+    } else if(q.type === "select"){
+      html += '<select class="input" id="sel"><option value="">' + esc(q.placeholder || "Tanlang") + '</option>';
+      q.options.forEach(function(o){
+        var v = oval(o);
+        html += '<option value="' + esc(v) + '"' + (state.answers[q.id] === v ? " selected" : "") + '>' + esc(v) + '</option>';
+      });
+      html += '</select>';
+    } else if(q.type === "textarea"){
+      html += '<textarea class="input" id="txt" placeholder="' + esc(q.placeholder || "") + '">' + esc(state.answers[q.id] || "") + '</textarea>';
+    } else {
+      html += '<input class="input" id="txt" type="text" inputmode="text" placeholder="' + esc(q.placeholder || "") + '" value="' + esc(state.answers[q.id] || "") + '">';
+    }
+
+    var last = state.step === total();
+    var hv = state.answers[q.id];
+    var hasAnswer = hv != null && (!Array.isArray(hv) || hv.length > 0) && String(hv).trim() !== "";
+    var needNext = q.type !== "single" || hasAnswer;
+    if(needNext || last){
+      html += '<div class="actions">';
+      if(q.optional && !last){
+        html += '<button class="btn ghost sm" id="skipBtn">O‘tkazib yuborish</button>';
+      }
+      var dis = (!q.optional && !hasAnswer && q.type !== "single") ? " disabled" : "";
+      html += '<button class="btn" id="nextBtn"' + dis + '>' + (last ? "Yuborish" : "Davom etish") + '</button>';
+      html += '</div>';
+    }
+    html += '<div class="error" id="err"></div>';
+    screen.innerHTML = html;
+
+    if(q.type === "single"){
+      Array.prototype.forEach.call(screen.querySelectorAll(".opt"), function(btn){
+        btn.onclick = function(){
+          Array.prototype.forEach.call(screen.querySelectorAll(".opt"), function(b){ b.setAttribute("aria-pressed","false"); });
+          btn.setAttribute("aria-pressed","true");
+          state.answers[q.id] = btn.getAttribute("data-v");
+          save(); haptic(); next();
+        };
+      });
+    }
+
+    if(q.type === "multi"){
+      Array.prototype.forEach.call(screen.querySelectorAll(".opt"), function(btn){
+        btn.onclick = function(){
+          var v = btn.getAttribute("data-v");
+          var cur = state.answers[q.id] || [];
+          var idx = cur.indexOf(v);
+          if(idx === -1){
+            if(q.max && cur.length >= q.max){
+              var err = document.getElementById("err");
+              err.textContent = "Eng ko‘pi " + q.max + " ta variant tanlash mumkin.";
+              err.classList.add("show");
+              return;
+            }
+            cur.push(v);
+          }else{
+            cur.splice(idx,1);
+          }
+          state.answers[q.id] = cur;
+          save(); haptic();
+          btn.setAttribute("aria-pressed", cur.indexOf(v) !== -1 ? "true" : "false");
+          var nb = document.getElementById("nextBtn");
+          if(nb && !(q.optional)) nb.disabled = cur.length === 0;
+          var e = document.getElementById("err"); if(e) e.classList.remove("show");
+        };
+      });
+    }
+
+    if(q.type === "select"){
+      var sel = document.getElementById("sel");
+      sel.onchange = function(){
+        state.answers[q.id] = sel.value;
+        save();
+        var nb = document.getElementById("nextBtn"); if(nb) nb.disabled = !sel.value;
+      };
+      var nb0 = document.getElementById("nextBtn");
+      if(nb0) nb0.disabled = !state.answers[q.id];
+    }
+
+    if(q.type === "text" || q.type === "textarea"){
+      var txt = document.getElementById("txt");
+      txt.oninput = function(){
+        state.answers[q.id] = txt.value;
+        save();
+        var nb = document.getElementById("nextBtn");
+        if(nb && !q.optional) nb.disabled = txt.value.trim() === "";
+      };
+    }
+
+    var nb = document.getElementById("nextBtn");
+    if(nb) nb.onclick = function(){ next(); };
+    var sb = document.getElementById("skipBtn");
+    if(sb) sb.onclick = function(){ next(); };
+  }
+
+  function next(){
+    var q = QUESTIONS[state.step - 1];
+    if(!q) return;
+    if(!q.optional){
+      var v = state.answers[q.id];
+      if(q.type === "multi"){ if(!v || !v.length) return; }
+      else if(q.type === "select" || q.type === "text" || q.type === "textarea"){ if(!v || String(v).trim()==="") return; }
+      else { if(v == null || v === "") return; }
+    }
+    state.step += 1;
+    save();
+    if(state.step > total()){ submit(); return; }
+    render();
+  }
+
+  /* ===== Shifrlash (ECIES: ECDH P-256 + HKDF + AES-GCM) ===== */
+  function b64buf(buf){
+    var arr = new Uint8Array(buf), b = "";
+    for(var i=0;i<arr.length;i++) b += String.fromCharCode(arr[i]);
+    return btoa(b);
+  }
+  async function gzipBytes(str){
+    var enc = new TextEncoder().encode(str);
+    if(!("CompressionStream" in window)) return {data:enc, z:0};
+    try{
+      var cs = new CompressionStream("gzip");
+      var w = cs.writable.getWriter();
+      w.write(enc); w.close();
+      var out = await new Response(cs.readable).arrayBuffer();
+      return {data:new Uint8Array(out), z:1};
+    }catch(e){ return {data:enc, z:0}; }
+  }
+  async function sealMessage(payloadStr){
+    var gz = await gzipBytes(payloadStr);
+    var spub = await crypto.subtle.importKey("jwk", CONFIG.pubJwk, {name:"ECDH", namedCurve:"P-256"}, false, []);
+    var eph = await crypto.subtle.generateKey({name:"ECDH", namedCurve:"P-256"}, true, ["deriveBits"]);
+    var bits = await crypto.subtle.deriveBits({name:"ECDH", public:spub}, eph.privateKey, 256);
+    var hk = await crypto.subtle.importKey("raw", bits, "HKDF", false, ["deriveKey"]);
+    var key = await crypto.subtle.deriveKey(
+      {name:"HKDF", hash:"SHA-256", salt:new Uint8Array(0), info:new Uint8Array(0)},
+      hk, {name:"AES-GCM", length:256}, false, ["encrypt"]);
+    var iv = crypto.getRandomValues(new Uint8Array(12));
+    var ct = await crypto.subtle.encrypt({name:"AES-GCM", iv:iv}, key, gz.data);
+    var epk = await crypto.subtle.exportKey("jwk", eph.publicKey);
+    return JSON.stringify({v:1, z:gz.z, x:epk.x, y:epk.y, i:b64buf(iv), c:b64buf(ct)});
+  }
+
+  async function buildMessage(payload){
+    var plain = JSON.stringify(payload);
+    if(CONFIG.encrypt && window.crypto && crypto.subtle && crypto.subtle.importKey){
+      var msg = await sealMessage(plain);
+      if(msg.length > 4000){
+        payload.meta.ua = "";
+        if(typeof payload.answers.comment === "string") payload.answers.comment = payload.answers.comment.slice(0, 300);
+        msg = await sealMessage(JSON.stringify(payload));
+      }
+      return msg;
+    }
+    return JSON.stringify({v:0, p:payload});
+  }
+
+  async function submit(){
+    if(state.submitting) return;
+    state.submitting = true;
+    setProgress();
+    sectionEl.textContent = "Yuborilmoqda";
+    counter.innerHTML = "";
+    backBtn.classList.remove("show");
+    screen.className = "screen enter";
+    screen.innerHTML = '<div class="loadwrap"><div class="spinner"></div><h2>Yuborilmoqda…</h2><p class="sub" style="margin:0">Bir necha soniya kuting.</p></div>';
+
+    var payload = {
+      survey: CONFIG.surveyId,
+      uid: state.uid,
+      answers: state.answers,
+      meta: {
+        startedAt: new Date(state.startedAt).toISOString(),
+        completedAt: new Date().toISOString(),
+        durationSec: Math.round((Date.now() - state.startedAt)/1000),
+        ref: (new URLSearchParams(location.search).get("ref") || ""),
+        ua: navigator.userAgent
+      }
+    };
+
+    if(!CONFIG.endpoint){
+      state.submitted = true; save();
+      setTimeout(function(){ doneScreen(true); }, 500);
+      return;
+    }
+
+    var message;
+    try{
+      message = await buildMessage(payload);
+    }catch(e){
+      try{ message = JSON.stringify({v:0, p:payload}); }catch(e2){ message = ""; }
+    }
+    if(!message){ renderSubmitError(); state.submitting = false; return; }
+
+    fetch(CONFIG.endpoint, {
+      method: "POST",
+      headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: message
+    }).then(function(r){
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return r.text();
+    }).then(function(){
+      state.submitted = true; save();
+      doneScreen(false);
+    }).catch(function(){
+      renderSubmitError();
+      state.submitting = false;
+    });
+  }
+
+  function renderSubmitError(){
+    sectionEl.textContent = "Xatolik";
+    screen.className = "screen enter";
+    screen.innerHTML = '<h2>Yuborishda xatolik</h2><p class="sub">Internet aloqasini tekshirib, qayta urinib ko‘ring. Javoblaringiz qurilmada saqlanib turibdi — yo‘qolmaydi.</p>' +
+      '<div class="actions"><button class="btn" id="retryBtn">Qayta yuborish</button><button class="btn ghost" id="laterBtn">Keyinroq</button></div>';
+    document.getElementById("retryBtn").onclick = function(){ state.submitting = false; submit(); };
+    document.getElementById("laterBtn").onclick = function(){ state.submitting = false; intro(); };
+  }
+
+  function doneScreen(demo){
+    setProgress();
+    sectionEl.textContent = "Yakun";
+    counter.innerHTML = "";
+    backBtn.classList.remove("show");
+    var mins = Math.max(1, Math.round((Date.now() - state.startedAt)/60000));
+    screen.className = "screen done enter";
+    screen.innerHTML =
+      '<div class="okcircle"><i>✓</i></div>' +
+      '<h2>Rahmat!</h2>' +
+      '<p>Javoblaringiz qabul qilindi. Ular yangi xizmatni sizga mos qilib yaratishda yordam beradi.</p>' +
+      '<div class="stats"><span class="stat">⏱ ' + mins + ' daqiqa</span><span class="stat">✅ ' + total() + ' savol</span></div>' +
+      (demo ? '<div class="demo show">Demo rejim: endpoint sozlanmagan — javoblar shu qurilmada saqlandi.</div>' : '') +
+      '<div class="shareRow"><button class="btn" id="shareBtn">Do‘stlarga ulashish</button><button class="btn ghost" id="closeBtn">Yopish</button></div>';
+    document.getElementById("shareBtn").onclick = async function(){
+      var url = location.origin + location.pathname;
+      try{
+        if(navigator.share){ await navigator.share({title:"InfoEdu.uz so'rovnomasi", text:"Bir necha daqiqada fikringizni qoldiring — yangi xizmat siz uchun quriladi", url:url}); }
+        else { await navigator.clipboard.writeText(url); toast("Havola nusxalandi ✓"); }
+      }catch(e){}
+    };
+    document.getElementById("closeBtn").onclick = function(){
+      try{ if(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.close) window.Telegram.WebApp.close(); }catch(e){}
+    };
+    try{ localStorage.removeItem(KEY); }catch(e){}
+  }
+
+  backBtn.onclick = function(){
+    if(state.step > 1){ state.step -= 1; save(); render(); }
+    else { state.step = 0; save(); intro(); }
+  };
+
+  try{
+    if(window.Telegram && window.Telegram.WebApp){
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    }
+  }catch(e){}
+
+  load();
+  if(state.step > 0 && !state.submitted){ render(); } else { intro(); }
+})();
+</script>
+</body>
+</html>

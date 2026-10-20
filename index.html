@@ -225,7 +225,7 @@
     {id:"payment", type:"single", section:"Narx va to'lov", title:"To'lov qilish sizga qaysi usulda qulay?", options:["Click","Payme","Uzum Bank","Plastik karta orqali o'tkazma","Naqd pul","Farqi yo'q"]},
     {id:"platform", type:"single", section:"Narx va to'lov", title:"Qayerda ishlash qulay?", options:["Saytda (brauzerda)","Telegram bot orqali","Mobil ilovada","Farqi yo'q"]},
     {id:"comment", type:"textarea", section:"Yakun", title:"Yana nima qo'shmoqchisiz?", hint:"Ixtiyoriy — qanday imkoniyat bo'lsa, albatta ishlatardingiz?", placeholder:"Fikringizni yozib qoldiring...", optional:true},
-    {id:"contact", type:"text", section:"Yakun", title:"Sovrinli o'yin uchun aloqa", hint:"Ixtiyoriy — Telegram username yoki telefon raqam. Faqat sovrin uchun ishlatiladi.", placeholder:"@username yoki +998...", optional:true}
+    {id:"contact", type:"text", section:"Yakun", title:"Aloqa (ixtiyoriy)", hint:"Ixtiyoriy — yangi xizmat haqida birinchilardan bo'lib xabar berish uchun. Telegram username yoki telefon raqam.", placeholder:"@username yoki +998...", optional:true}
   ];
 
   var KEY = "infoedu_survey_v2";
@@ -303,7 +303,6 @@
         '<span class="pill">✍️ 20 savol</span>' +
         '<span class="pill">🔒 Anonim</span>' +
       '</div>' +
-      '<div class="prize"><span class="em">🎁</span><div><b>Sovrin:</b> 5 ishtirokchiga 1 oylik premium obuna. Ishtirok etish uchun oxirgi savolda aloqa qoldirasiz (ixtiyoriy).</div></div>' +
       (saved ? '<div class="resume show"><span>Avval boshlagan edingiz.</span><button id="resumeBtn">Davom ettirish</button></div>' : '') +
       '<div class="actions"><button class="btn" id="startBtn">' + (saved ? "Boshidan boshlash" : "So‘rovnomani boshlash →") + '</button></div>' +
       '<div class="trust"><span>🔐 Javoblar shifrlangan ko‘rinishda yuboriladi</span></div>';
